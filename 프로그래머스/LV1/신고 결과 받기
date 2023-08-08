@@ -1,0 +1,55 @@
+map을 이용하는것이다 핵심은 Map의 value로 Set자료구조를 이용하는것같다
+
+
+```java
+import java.util.*;
+
+class Solution {
+    public int[] solution(String[] id_list, String[] report, int k) {
+        int[] answer = new int[id_list.length];
+        Map<String, Integer> result = new HashMap<>();
+        Map<String, Set<String>> singo = new HashMap<>();
+        for(int i=0; i< id_list.length; i++){
+            result.put(id_list[i], 0);
+        }
+
+        for(int i=0; i<report.length; i++){
+            String[] split = report[i].split(" ");
+            String from = split[0]; // from
+            String to = split[1];// to
+            if(!singo.containsKey(to)){
+                Set<String> set = new HashSet<>();
+                set.add(from);
+                singo.put(to, set);
+            }else{
+                Set<String> getSet = singo.get(to);
+                getSet.add(from);
+            }
+        }
+
+        // 1000 * 1000 = 1,000,000
+        for(String key : singo.keySet()){
+            Set<String> set = singo.get(key);
+            if(set.size()>=k){
+                // key인 애 +1
+                // set에있는애들 다
+//                result.put(key, result.get(key)+1);
+                Iterator<String> iterator = set.iterator();
+                while(iterator.hasNext()){
+                    String next = iterator.next();
+                    result.put(next, result.get(next)+1);
+                }
+            }
+        }
+
+        for(int i=0; i< id_list.length; i++){
+            answer[i] = result.get(id_list[i]);
+        }
+        
+        
+
+        return answer;
+    }
+}
+
+```
