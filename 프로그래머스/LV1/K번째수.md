@@ -1,4 +1,5 @@
 정렬문제이다 그냥 단순하다
+여기서 배열에서 copyOfRange로 범위를 복사할 수 있다
 
 ```java
 import java.util.*;
