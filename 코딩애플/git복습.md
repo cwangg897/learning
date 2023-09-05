@@ -44,7 +44,8 @@ conflict는 하나의 커밋 브렌치가 합쳐지면서 이 충돌 커밋내�
 
 ![image](https://github.com/cwangg897/learning/assets/79621675/f80d4240-ee15-4907-ba31-cbb5f9c23455)<br>
 이그림과 같이 합쳐지면 하나의 곳을 바라보게됨 coupon도 합쳐진곳을 보고 master도 합쳐진곳을 보게됨 <br>
-그런데 만약 합치고 coupon으로 계속하면 그림이 어떻게되는지 실습해보기
+그런데 만약 합치고 coupon으로 계속하면 그림이 어떻게되는지 실습해보기 <br> 
+merge를 master에서 하니까 충돌나면은 충돌난 상태에서 coupon으로 옮기질 못한다 <br>
 
 
 ![image](https://github.com/cwangg897/learning/assets/79621675/e95e3ee4-6552-432b-bcbc-c65c1a2eb823) <br>
