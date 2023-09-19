@@ -38,4 +38,8 @@ kubectl set image deploy http-go http-go=gasbugs/http-go:v2
 업데이트할떄마다 replicaSet이 새로생기고 이전 replicaSet은 replicas를 0으로 만든것이다
 set image = yaml파일을 바꾸는거랑 같다
 kubectl edit deploy http-go --record=true
+kubectl rollout history deploy http-go (이렇게하면 버전하나가 내려간다)
+특정 버전으로 돌아가는경우
+kubectl rollout undo deploy http-go --to-revision = 1
+히스토리 revision번호임
 ```
