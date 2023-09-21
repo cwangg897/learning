@@ -57,7 +57,7 @@ Selector가 제외된 형태 (수동형태)
 #### 서비스 노출(외부)하는 세 가지 방법
 ```
 클러스터 IP의 특징 중 하나는 외부서비스가 아니라 내부의 서비스를 공유하기 위한 자원이다 외부로 노출하는게 아닌거같다
-NodePort : 노드(쿠버네티스)의 자체 포트를 사용하여 파드로 리다이렉션
+NodePort : 노드(쿠버네티스)의 자체 포트를 사용하여 파드로 리다이렉션 - 노드의 포트를 진짜 여는거임 그래서 로드밸런서랑 합체하는듯
 LoadBalancer : 외부 게이트웨이를 사용해 노드 포트로 리다이렉션
 NodePort, LocalBalancer는 서비스의 타입으로 보면되고 Ingress는 외부에 별도의 리소스를 만들고 리소스로 답이오면 Ingress하는 역할을 한다
 
@@ -65,4 +65,23 @@ Ingress : 하나의 IP주소를 통해 여러 서비스를 제공하는 특별�
 용어의 구분을하는게 제일 중요하는듯 지금은 이해가안감
 ```
 
+### NodePort
+```yaml
+apiVersion: v1
 
+kind : Service
+
+metadata:
+  name : http-go-np
+spec:
+  type : NodePort
+  port:
+  - port: 80 # 서비스의 포트
+    targetPort : 8080 # 파드의 노트
+    nodePort : 30001 # 최종적으로 서비스되는 포트
+  selector:
+    app : http-go
+
+# 30001으로 오면 svc역할하는곳으로 연결되고 80 -> 8080으로
+# 실제로는 30001인데 SVC를 갖는 로드밸런서는 80을 가지게된다 나중에알게된다...
+```
