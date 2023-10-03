@@ -2,4 +2,4 @@
 그림으로 그려보고 생각하자
 
 
-![image](https://github.com/cwangg897/learning/assets/79621675/73b6b0e3-aacd-4333-820c-d68c61c70be8)
+![image](https://github.com/cwangg897/learning/assets/79621675/27bb41a6-bf24-4a86-a716-1ff17e63dfb9)
