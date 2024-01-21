@@ -15,6 +15,3 @@
         return Flux.fromIterable(list); 
     }
 ```
-
-
-### Webflux Post API
