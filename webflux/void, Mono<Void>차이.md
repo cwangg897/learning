@@ -30,3 +30,29 @@ public Mono<Void> deleteById(String id) {
 우리가 빌린것은 몽고db이다
 그래서 안에 데이터베이스를 생성해주고 컬렉션도 만들어줘야한다
 ![image](https://github.com/cwangg897/learning/assets/79621675/29454710-bf8b-43e4-bf3a-aeb0f110791e)
+
+
+### 오류나는 경우
+```java
+
+    public Flux<ProductDto> getProductByPriceRange(int min, int max) {
+        return productRepository.findAllByPriceBetween(min, max)
+                .map(EntityDtoUtil::entityToDto);
+
+// 이거는 왜 타입이 안맞다고하는거지?... 
+        return productRepository.findAllByPriceBetween(min, max)
+                .flatMap(EntityDtoUtil::entityToDto);
+    }
+```
+
+### Range Guava
+```
+Range.closed(min, max):
+
+이 메서드는 최소값과 최대값을 포함하는 닫힌 범위를 생성합니다.
+예를 들어, Range.closed(1, 5)는 1과 5를 포함하는 [1, 5]와 같은 범위를 생성합니다.
+Range.open(min, max):
+
+이 메서드는 최소값과 최대값을 포함하지 않는 열린 범위를 생성합니다.
+예를 들어, Range.open(1, 5)는 1과 5를 포함하지 않는 (1, 5)와 같은 범위를 생성합니다.
+```
